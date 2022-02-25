@@ -22,7 +22,11 @@ export const Contacts = () => {
 					<ul className="list-group pull-down" id="contact-list">
 						{store.agenda.map((item, index) => {
 							return (
-								<ContactCard onDelete={() => setState({ showModal: true })} agenda={item} key={index} />
+								<ContactCard
+									onDelete={() => setState({ showModal: true })}
+									contact={item}
+									key={index}
+								/>
 							);
 						})}
 					</ul>

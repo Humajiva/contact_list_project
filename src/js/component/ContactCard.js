@@ -23,10 +23,10 @@ export const ContactCard = props => {
 							<i className="fas fa-trash-alt" />
 						</button>
 					</div>
-					<label className="name lead">{props.agenda.name}</label>
+					<label className="name lead">{props.contact.full_name}</label>
 					<br />
 					<i className="fas fa-map-marker-alt text-muted mr-3" />
-					<span className="text-muted">{props.agenda.address}</span>
+					<span className="text-muted">{props.contact.address}</span>
 					<br />
 					<span
 						className="fa fa-phone fa-fw text-muted mr-3"
@@ -34,7 +34,7 @@ export const ContactCard = props => {
 						title=""
 						data-original-title="(870) 288-4149"
 					/>
-					<span className="text-muted small">{props.agenda.phone}</span>
+					<span className="text-muted small">{props.contact.phone}</span>
 					<br />
 					<span
 						className="fa fa-envelope fa-fw text-muted mr-3"
@@ -42,7 +42,7 @@ export const ContactCard = props => {
 						data-original-title=""
 						title=""
 					/>
-					<span className="text-muted small text-truncate">{props.agenda.email}</span>
+					<span className="text-muted small text-truncate">{props.contact.email}</span>
 				</div>
 			</div>
 		</li>
@@ -56,7 +56,7 @@ export const ContactCard = props => {
 ContactCard.propTypes = {
 	history: PropTypes.object,
 	onDelete: PropTypes.func,
-	agenda: PropTypes.object
+	contact: PropTypes.object
 };
 
 /**

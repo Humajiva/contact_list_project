@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const AddContact = () => {
+	const { store, actions } = useContext(Context);
+	const [fullName, setFullName] = useState("");
+	const [email, setEmail] = useState("");
+	const [address, setAddress] = useState("");
+	const [phone, setPhone] = useState("");
+	const addNewContact = (fn, em, ad, ph) => {
+		fetch("https://assets.breatheco.de/apis/fake/contact/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				full_name: fn,
+				email: em,
+				address: ad,
+				phone: ph,
+				agenda_slug: "Huma_jiva"
+			})
+		})
+			.then(response => response.json())
+			.then(data => {
+				actions.getData();
+			})
+			.catch(error => {
+				console.error("Error:", error);
+			});
+	};
 	return (
 		<div className="container">
 			<div>
@@ -9,21 +37,48 @@ export const AddContact = () => {
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Full Name" />
+						<input
+							value={fullName}
+							onChange={e => setFullName(e.target.value)}
+							type="text"
+							className="form-control"
+							placeholder="Full Name"
+						/>
 					</div>
 					<div className="form-group">
 						<label>Email</label>
-						<input type="email" className="form-control" placeholder="Enter email" />
+						<input
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							type="email"
+							className="form-control"
+							placeholder="Enter email"
+						/>
 					</div>
 					<div className="form-group">
 						<label>Phone</label>
-						<input type="phone" className="form-control" placeholder="Enter phone" />
+						<input
+							value={phone}
+							onChange={e => setPhone(e.target.value)}
+							type="phone"
+							className="form-control"
+							placeholder="Enter phone"
+						/>
 					</div>
 					<div className="form-group">
 						<label>Address</label>
-						<input type="text" className="form-control" placeholder="Enter address" />
+						<input
+							value={address}
+							onChange={e => setAddress(e.target.value)}
+							type="text"
+							className="form-control"
+							placeholder="Enter address"
+						/>
 					</div>
-					<button type="button" className="btn btn-primary form-control">
+					<button
+						onClick={() => addNewContact(fullName, email, address, phone)}
+						type="button"
+						className="btn btn-primary form-control">
 						save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">
