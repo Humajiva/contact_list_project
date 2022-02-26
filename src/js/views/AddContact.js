@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, getActions } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -8,27 +8,28 @@ export const AddContact = () => {
 	const [email, setEmail] = useState("");
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
-	const addNewContact = (fn, em, ad, ph) => {
-		fetch("https://assets.breatheco.de/apis/fake/contact/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				full_name: fn,
-				email: em,
-				address: ad,
-				phone: ph,
-				agenda_slug: "Huma_jiva"
-			})
-		})
-			.then(response => response.json())
-			.then(data => {
-				actions.getData();
-			})
-			.catch(error => {
-				console.error("Error:", error);
-			});
+
+	// const addNewContact = contact => {
+	// 	fetch("https://assets.breatheco.de/apis/fake/contact/", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		},
+	// 		body: JSON.stringify({
+	// 			full_name: contact.name,
+	// 			email: contact.emailem,
+	// 			address: contact.address,
+	// 			phone: contact.phone,
+	// 			agenda_slug: "Huma_jiva"
+	// 		})
+	// 	})
+	// 		.then(response => response.json())
+	// 		.then(data => {
+	// 			getActions().getData();
+	// 		})
+	// 		.catch(error => {
+	// 			console.error("Error:", error);
+			//});
 	};
 	return (
 		<div className="container">
@@ -70,13 +71,14 @@ export const AddContact = () => {
 						<input
 							value={address}
 							onChange={e => setAddress(e.target.value)}
+
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
 						/>
 					</div>
 					<button
-						onClick={() => addNewContact(fullName, email, address, phone)}
+						onClick={() => actions.addNewContact(fullName, email, address, phone)}
 						type="button"
 						className="btn btn-primary form-control">
 						save

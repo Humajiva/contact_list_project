@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
+import { EditContact } from "./EditContact";
 
 export const Contacts = () => {
 	const { store, actions } = useContext(Context);
