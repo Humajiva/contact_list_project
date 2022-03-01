@@ -8,7 +8,8 @@ import { EditContact } from "./EditContact";
 export const Contacts = () => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
-		showModal: false
+		showModal: false,
+		id: null
 	});
 
 	return (
@@ -24,7 +25,7 @@ export const Contacts = () => {
 						{store.agenda.map((item, index) => {
 							return (
 								<ContactCard
-									onDelete={() => setState({ showModal: true })}
+									onDelete={() => setState({ showModal: true, id: item.id })}
 									contact={item}
 									key={index}
 								/>
@@ -33,7 +34,7 @@ export const Contacts = () => {
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} id={state.id} />
 		</div>
 	);
 };

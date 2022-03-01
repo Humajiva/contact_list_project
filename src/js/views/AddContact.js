@@ -9,28 +9,6 @@ export const AddContact = () => {
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
 
-	// const addNewContact = contact => {
-	// 	fetch("https://assets.breatheco.de/apis/fake/contact/", {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json"
-	// 		},
-	// 		body: JSON.stringify({
-	// 			full_name: contact.name,
-	// 			email: contact.emailem,
-	// 			address: contact.address,
-	// 			phone: contact.phone,
-	// 			agenda_slug: "Huma_jiva"
-	// 		})
-	// 	})
-	// 		.then(response => response.json())
-	// 		.then(data => {
-	// 			getActions().getData();
-	// 		})
-	// 		.catch(error => {
-	// 			console.error("Error:", error);
-			//});
-	};
 	return (
 		<div className="container">
 			<div>
@@ -71,7 +49,6 @@ export const AddContact = () => {
 						<input
 							value={address}
 							onChange={e => setAddress(e.target.value)}
-
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
