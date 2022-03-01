@@ -54,12 +54,14 @@ export const AddContact = () => {
 							placeholder="Enter address"
 						/>
 					</div>
-					<button
-						onClick={() => actions.addNewContact(fullName, email, address, phone)}
-						type="button"
-						className="btn btn-primary form-control">
-						save
-					</button>
+					<link to="/">
+						<button
+							onClick={() => actions.addNewContact(fullName, email, address, phone)}
+							type="button"
+							className="btn btn-primary form-control">
+							save
+						</button>
+					</link>
 					<Link className="mt-3 w-100 text-center" to="/">
 						or get back to contacts
 					</Link>
